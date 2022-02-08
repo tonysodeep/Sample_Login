@@ -47,11 +47,12 @@ class LoginSignupService {
 
   Future<bool> getUserSignUp(User user) async {
     final response = await client.post(
-      Uri.parse('https://reqres.in/api/login'),
-      body: json.encode(user.toJson()),
+      Uri.parse('https://jsonplaceholder.typicode.com/users'),
+      body: user.toJson(),
       encoding: Encoding.getByName('uft-8'),
     );
-    if (response.statusCode == 200) {
+    print(response.statusCode);
+    if (response.statusCode == 201) {
       return true;
     } else {
       return false;

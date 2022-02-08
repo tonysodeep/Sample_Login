@@ -4,14 +4,19 @@ import 'package:login_training/repositories/welcome_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeRepoImpl extends WelcomeRepo {
+  AuthenticationService authenticationService = AuthenticationService();
   @override
   Future<bool> checkAuthentication() async {
-    AuthenticationService authenticationService = AuthenticationService();
     final String? token = await authenticationService.getToken();
     if(token == null){
       return false;
     }
     return true;
+  }
+
+  @override
+  Future<void> signOut() async {
+    await authenticationService.clearToken();
   }
 }
 
@@ -28,4 +33,9 @@ class AuthenticationService {
     String? token = pref.getString(LocalDBConstant.cachedToken);
     return token;
   }
+
+  Future<void> clearToken() async{
+    pref = await SharedPreferences.getInstance();
+    pref.clear();
+}
 }

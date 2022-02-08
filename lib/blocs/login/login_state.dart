@@ -5,7 +5,7 @@ abstract class LoginState {}
 
 class LoginInitial extends LoginState {}
 
-class LoginLoading extends LoginState {}
+class Loading extends LoginState {}
 
 class LoginLoaded extends LoginState {
   final LoginResponseModel loginResponseModel;
@@ -18,3 +18,7 @@ class LoginError extends LoginState {
 
   LoginError({required this.loginResponseModel});
 }
+
+class SignUpSuccess extends LoginState{}
+
+class SignUpError extends LoginState{}

@@ -14,9 +14,7 @@ class User {
   Map<String, dynamic> toJson() {
     return {
       "username": userName,
-      "email": email,
-      "password": password,
-      "phone": phone
+      "email": email
     };
   }
 }

@@ -10,3 +10,5 @@ class WelcomeLoading extends WelcomeState{}
 class WelcomeLogged extends WelcomeState{}
 
 class WelcomeNotLogged extends WelcomeState{}
+
+class WelcomeClear extends WelcomeState{}

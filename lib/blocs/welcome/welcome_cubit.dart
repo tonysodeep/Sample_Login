@@ -13,12 +13,15 @@ class WelcomeCubit extends Cubit<WelcomeState> {
   void checkAuthentication() async {
     emit(WelcomeLoading());
     final result = await welcomeRepo.checkAuthentication();
-    if(result){
+    if (result) {
       emit(WelcomeLogged());
-    }else{
+    } else {
       emit(WelcomeNotLogged());
     }
   }
 
-
+  void logout() async {
+    await welcomeRepo.signOut();
+    emit(WelcomeClear());
+  }
 }

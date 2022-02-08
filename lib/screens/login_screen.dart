@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passController,
             ),
             BlocConsumer<LoginCubit, LoginState>(builder: (context, state) {
-              if (state is LoginLoading) {
+              if (state is Loading) {
                 return const CircularProgressIndicator();
               }
               if (state is LoginError) {
